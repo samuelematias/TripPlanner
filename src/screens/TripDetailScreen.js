@@ -28,6 +28,10 @@ class TripDetailScreen extends Component {
 		this.loadData();
 	}
 
+	componentWillUnmount() {
+		this.props.navigation.state.params.refresh();
+	}
+
 	loadData = async () => {
 		const id = this.props.navigation.state.params.id;
 
