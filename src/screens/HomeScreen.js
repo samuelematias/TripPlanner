@@ -11,7 +11,11 @@ import styles from './styles/HomeScreenStyles';
 
 import { assets } from '../themes';
 
+import isIphoneX from '../utils/IsIphoneX';
 class HomeScreen extends Component {
+	static navigationOptions = {
+		header: null
+	};
 	state = {
 		show: true
 	};
@@ -35,18 +39,28 @@ class HomeScreen extends Component {
 				</View>
 				{!this.state.show ? (
 					<TouchableWithoutFeedback onPress={() => this._handleCounter()}>
-						<View style={styles.buttonBackground}>
+						<View
+							style={[
+								styles.buttonBackground,
+								isIphoneX() ? { paddingBottom: 32 } : null
+							]}
+						>
 							<Text style={styles.buttonText}>{'COMEÇAR!'}</Text>
 						</View>
 					</TouchableWithoutFeedback>
 				) : (
-					<TouchableWithoutFeedback onPress={() => this._handleCounter()}>
+					<TouchableWithoutFeedback
+						onPress={() => this.props.navigation.navigate('Trips')}
+					>
 						<View style={styles.buttonEmptyStateBackground}>
 							<Image source={assets.iconPin} style={styles.iconPin} />
 							<Text style={styles.buttonEmptyStateText}>
 								{'Vamos planejar sua primeira viagem ?'}
 							</Text>
-							<Image source={assets.iconArrowRight} />
+							<Image
+								source={assets.iconArrowRight}
+								style={isIphoneX() ? { marginBottom: 16 } : null}
+							/>
 						</View>
 					</TouchableWithoutFeedback>
 				)}
