@@ -5,7 +5,8 @@ const images = {
 	lgTripPlanner: require('../../assets/logo-tripplanner.png'),
 	iconArrowRight: require('../../assets/icon-arrow-right.png'),
 	iconPin: require('../../assets/icon-pin.png'),
-	iconChevronLeft: require('../../assets/icon-chevron-left.png')
+	iconChevronLeft: require('../../assets/icon-chevron-left.png'),
+	iconPlus: require('../../assets/icon-plus.png')
 };
 
 export default images;
