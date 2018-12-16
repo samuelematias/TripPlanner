@@ -17,7 +17,7 @@ class HomeScreen extends Component {
 		header: null
 	};
 	state = {
-		show: true
+		show: false
 	};
 	_handleCounter = () => {
 		this.setState({

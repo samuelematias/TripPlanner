@@ -7,7 +7,6 @@ export default StyleSheet.create({
 		justifyContent: 'space-between'
 	},
 	wrapperMapa: {
-		backgroundColor: 'red',
 		flex: 1
 	},
 	wrapperList: {
