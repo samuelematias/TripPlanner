@@ -27,5 +27,19 @@ export default StyleSheet.create({
 	buttonText: {
 		textAlign: 'center',
 		fontSize: 18
+	},
+	iconPin: {
+		marginBottom: 16
+	},
+	buttonEmptyStateBackground: {
+		backgroundColor: '#fff',
+		paddingBottom: 16,
+		paddingTop: 16,
+		alignItems: 'center'
+	},
+	buttonEmptyStateText: {
+		textAlign: 'center',
+		fontSize: 18,
+		width: 220
 	}
 });
