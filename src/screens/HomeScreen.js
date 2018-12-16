@@ -7,6 +7,10 @@ import {
 	TouchableWithoutFeedback
 } from 'react-native';
 
+import styles from './styles/HomeScreenStyles';
+
+import { assets } from '../themes';
+
 class HomeScreen extends Component {
 	state = {
 		counter: 0
@@ -19,43 +23,19 @@ class HomeScreen extends Component {
 	render() {
 		return (
 			<ImageBackground
-				source={require('../../assets/background.png')}
+				source={assets.imgBackground}
 				imageStyle={{ resizeMode: 'stretch' }}
-				style={{
-					flex: 1,
-					alignItems: 'stretch',
-					justifyContent: 'space-between',
-					flexDirection: 'column'
-				}}
+				style={styles.containerBackground}
 			>
-				<View
-					style={{
-						flex: 1,
-						alignItems: 'center',
-						justifyContent: 'center'
-					}}
-				>
-					<Image source={require('../../assets/logo-tripplanner.png')} />
+				<View style={styles.wrapperLogoTripPlanner}>
+					<Image source={assets.lgTripPlanner} />
 				</View>
-				<View
-					style={{
-						flexDirection: 'row',
-						alignItems: 'flex-end',
-						justifyContent: 'center',
-						paddingBottom: 32
-					}}
-				>
-					<Image source={require('../../assets/logo-devpleno.png')} />
+				<View style={styles.wrapperLogoDevPleno}>
+					<Image source={assets.lgDevPleno} />
 				</View>
 				<TouchableWithoutFeedback onPress={() => this._handleCounter()}>
-					<View
-						style={{
-							backgroundColor: '#fff',
-							paddingBottom: 16,
-							paddingTop: 16
-						}}
-					>
-						<Text style={{ textAlign: 'center', fontSize: 18 }}>
+					<View style={styles.buttonBackground}>
+						<Text style={styles.buttonText}>
 							{'COMEÇAR! ' + this.state.counter}
 						</Text>
 					</View>
