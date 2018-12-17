@@ -21,14 +21,25 @@ class TripsScreen extends Component {
 		header: null
 	};
 
-	state = {
-		trips: []
-	};
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			trips: []
+		};
+	}
 
 	componentDidMount() {
 		this.loadData();
 	}
 
+	/**
+	 * Load the data of phoneStorage to be used.
+	 * @author samuelmataraso
+	 * @method loadData
+	 * @param none
+	 * @returns state
+	 */
 	loadData = async () => {
 		const tripsAS = await AsyncStorage.getItem('trips');
 		let trips = [];
@@ -40,6 +51,14 @@ class TripsScreen extends Component {
 		});
 	};
 
+	/**
+	 * Handle each one item of flatlist.
+	 * When scrolled the item, the map will be changing to the current lat/lon of the item.
+	 * @author samuelmataraso
+	 * @method _handleItemChange
+	 * @param object info
+	 * @returns object
+	 */
 	_handleItemChange = info => {
 		const { viewableItems } = info;
 		if (viewableItems && viewableItems.length > 0) {
@@ -51,6 +70,15 @@ class TripsScreen extends Component {
 		}
 	};
 
+	/**
+	 * Calculates the lat/lon/distance to be used on _handleItemChange function.
+	 * @author samuelmataraso
+	 * @method regionFrom
+	 * @param float lat
+	 * @param float lon
+	 * @param float distance
+	 * @returns object
+	 */
 	regionFrom = (lat, lon, distance) => {
 		distance = distance / 2;
 		const circumference = 40075;
@@ -73,8 +101,13 @@ class TripsScreen extends Component {
 		});
 	};
 
-	_keyExtractor = item => item.id.toString();
-
+	/**
+	 * Render each one item of flatlist
+	 * @author samuelmataraso
+	 * @method _renderItem
+	 * @param array item
+	 * @returns func
+	 */
 	_renderItem = item => {
 		return (
 			<Trip
@@ -89,6 +122,7 @@ class TripsScreen extends Component {
 			/>
 		);
 	};
+
 	render() {
 		const { trips } = this.state;
 
@@ -111,12 +145,7 @@ class TripsScreen extends Component {
 								refresh: this.loadData
 							})
 						}
-						style={{
-							position: 'absolute',
-							bottom: 0,
-							right: 20,
-							padding: 10
-						}}
+						style={styles.buttonPlus}
 					>
 						<Image source={assets.iconPlus} />
 					</TouchableOpacity>
@@ -127,7 +156,7 @@ class TripsScreen extends Component {
 						renderItem={this._renderItem}
 						horizontal
 						pagingEnabled
-						keyExtractor={this._keyExtractor}
+						keyExtractor={item => item.id.toString()}
 						style={[isIphoneX() ? { marginBottom: 20 } : null]}
 						onViewableItemsChanged={this._handleItemChange}
 					/>

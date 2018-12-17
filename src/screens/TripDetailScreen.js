@@ -19,10 +19,14 @@ class TripDetailScreen extends Component {
 		header: null
 	};
 
-	state = {
-		trip: [],
-		points: []
-	};
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			trip: [],
+			points: []
+		};
+	}
 
 	componentDidMount() {
 		this.loadData();
@@ -32,6 +36,13 @@ class TripDetailScreen extends Component {
 		this.props.navigation.state.params.refresh();
 	}
 
+	/**
+	 * Load the data of phoneStorage to be used.
+	 * @author samuelmataraso
+	 * @method loadData
+	 * @param none
+	 * @returns state
+	 */
 	loadData = async () => {
 		const id = this.props.navigation.state.params.id;
 
@@ -63,6 +74,13 @@ class TripDetailScreen extends Component {
 		});
 	};
 
+	/**
+	 * Render each one item of flatlist
+	 * @author samuelmataraso
+	 * @method _renderItem
+	 * @param array item
+	 * @returns func
+	 */
 	_renderItem = item => {
 		return (
 			<View style={styles.item}>
@@ -78,6 +96,7 @@ class TripDetailScreen extends Component {
 			</View>
 		);
 	};
+
 	render() {
 		const { points, trip } = this.state;
 		const id = this.props.navigation.state.params.id;
@@ -85,7 +104,7 @@ class TripDetailScreen extends Component {
 			<View style={styles.wrapper}>
 				<View style={styles.header}>
 					<View
-						style={[styles.backButton, isIphoneX() ? { paddingTop: 16 } : null]}
+						style={[styles.buttonBack, isIphoneX() ? { paddingTop: 16 } : null]}
 					>
 						<TouchableOpacity
 							onPress={() => {
@@ -107,12 +126,7 @@ class TripDetailScreen extends Component {
 								refresh: this.loadData
 							})
 						}
-						style={{
-							position: 'absolute',
-							bottom: 100,
-							right: 20,
-							padding: 10
-						}}
+						style={styles.buttonPlus}
 					>
 						<Image source={assets.iconPlus} />
 					</TouchableOpacity>

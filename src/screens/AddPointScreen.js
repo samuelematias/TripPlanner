@@ -21,17 +21,32 @@ class AddPointScreen extends Component {
 		header: null
 	};
 
-	state = {
-		id: new Date().getTime(),
-		position: {
-			latitude: 37.78825,
-			longitude: -122.4324
-		},
-		pointName: '',
-		description: '',
-		price: 0
-	};
+	constructor(props) {
+		super(props);
 
+		this.state = {
+			id: new Date().getTime(),
+			position: {
+				latitude: 37.78825,
+				longitude: -122.4324
+			},
+			pointName: '',
+			description: '',
+			price: 0
+		};
+	}
+
+	componentWillUnmount() {
+		this.props.navigation.state.params.refresh();
+	}
+
+	/**
+	 * Handle the data to save on phontStorage by AsyncStorage
+	 * @author samuelmataraso
+	 * @method _handleSave
+	 * @param none
+	 * @returns json
+	 */
 	_handleSave = async () => {
 		const id = this.props.navigation.state.params.id;
 		const pointsAS = await AsyncStorage.getItem('trip-' + id);

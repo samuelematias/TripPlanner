@@ -11,5 +11,11 @@ export default StyleSheet.create({
 	},
 	wrapperList: {
 		backgroundColor: 'white'
+	},
+	buttonPlus: {
+		position: 'absolute',
+		bottom: 0,
+		right: 20,
+		padding: 10
 	}
 });

@@ -29,7 +29,7 @@ export default StyleSheet.create({
 		height: 225,
 		backgroundColor: 'gray'
 	},
-	backButton: {
+	buttonBack: {
 		position: 'absolute',
 		top: 16
 	},
@@ -53,5 +53,11 @@ export default StyleSheet.create({
 	containerList: {
 		paddingTop: 16,
 		paddingLeft: 16
+	},
+	buttonPlus: {
+		position: 'absolute',
+		bottom: 100,
+		right: 20,
+		padding: 10
 	}
 });

@@ -14,10 +14,25 @@ class AddTripScreen extends Component {
 		header: null
 	};
 
-	state = {
-		trip: ''
-	};
+	constructor(props) {
+		super(props);
 
+		this.state = {
+			trip: ''
+		};
+	}
+
+	componentWillUnmount() {
+		this.props.navigation.state.params.refresh();
+	}
+
+	/**
+	 * Handle the data to save on phontStorage by AsyncStorage
+	 * @author samuelmataraso
+	 * @method _handleSave
+	 * @param none
+	 * @returns json
+	 */
 	_handleSave = async () => {
 		const trip = {
 			id: new Date().getTime(),
@@ -34,9 +49,6 @@ class AddTripScreen extends Component {
 		}
 		trips.push(trip);
 		await AsyncStorage.setItem('trips', JSON.stringify(trips));
-		// this.props.navigation.navigate('AddPoint', {
-		// 	id: trip.id
-		// });
 		this.props.navigation.state.params.refresh();
 		this.props.navigation.goBack();
 	};

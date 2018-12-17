@@ -16,10 +16,23 @@ class HomeScreen extends Component {
 	static navigationOptions = {
 		header: null
 	};
-	state = {
-		show: false
-	};
-	_handleCounter = () => {
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			show: false
+		};
+	}
+
+	/**
+	 * Handle to show the button COMEÇAR ! to Vamos planejar sua primeira viagem
+	 * @author samuelmataraso
+	 * @method _handleShowButton
+	 * @param none
+	 * @returns state
+	 */
+	_handleShowButton = () => {
 		this.setState({
 			show: !this.state.show
 		});
@@ -38,7 +51,7 @@ class HomeScreen extends Component {
 					<Image source={assets.lgDevPleno} />
 				</View>
 				{!this.state.show ? (
-					<TouchableWithoutFeedback onPress={() => this._handleCounter()}>
+					<TouchableWithoutFeedback onPress={() => this._handleShowButton()}>
 						<View
 							style={[
 								styles.buttonBackground,

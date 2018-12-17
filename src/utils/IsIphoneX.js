@@ -1,5 +1,12 @@
 import { Dimensions, Platform } from 'react-native';
 
+/**
+ * Checks if the Device is a iPhone X
+ * @author samuelmataraso
+ * @method isIphoneX
+ * @param none
+ * @returns bool
+ */
 export default (isIphoneX = () => {
 	const dim = Dimensions.get('window');
 	return (
