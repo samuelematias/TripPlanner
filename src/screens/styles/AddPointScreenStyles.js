@@ -23,7 +23,8 @@ export default StyleSheet.create({
 		fontWeight: 'bold'
 	},
 	wrapper: {
-		flex: 1
+		flex: 1,
+		marginBottom: 10
 	},
 	header: {
 		height: 225,

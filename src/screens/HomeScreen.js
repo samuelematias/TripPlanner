@@ -4,7 +4,8 @@ import {
 	Text,
 	ImageBackground,
 	Image,
-	TouchableWithoutFeedback
+	TouchableWithoutFeedback,
+	Button
 } from 'react-native';
 
 import styles from './styles/HomeScreenStyles';
@@ -20,23 +21,9 @@ class HomeScreen extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			show: false
-		};
+		this.state = {};
 	}
 
-	/**
-	 * Handle to show the button Começar to Vamos planejar suas viagens ?
-	 * @author samuelmataraso
-	 * @method _handleShowButton
-	 * @param none
-	 * @returns state
-	 */
-	_handleShowButton = () => {
-		this.setState({
-			show: !this.state.show
-		});
-	};
 	render() {
 		return (
 			<ImageBackground
@@ -50,34 +37,18 @@ class HomeScreen extends Component {
 				<View style={styles.wrapperLogoDevPleno}>
 					<Image source={assets.lgDevPleno} />
 				</View>
-				{!this.state.show ? (
-					<TouchableWithoutFeedback onPress={() => this._handleShowButton()}>
-						<View
-							style={[
-								styles.buttonBackground,
-								isIphoneX() ? { paddingBottom: 32 } : null
-							]}
-						>
-							<Text style={styles.buttonText}>{'Começar'}</Text>
-						</View>
-					</TouchableWithoutFeedback>
-				) : (
-					<TouchableWithoutFeedback
-						onPress={() => this.props.navigation.navigate('Trips')}
+				<TouchableWithoutFeedback
+					onPress={() => this.props.navigation.navigate('modal')}
+				>
+					<View
+						style={[
+							styles.buttonBackground,
+							isIphoneX() ? { paddingBottom: 32 } : null
+						]}
 					>
-						<View
-							style={[
-								styles.buttonEmptyStateBackground,
-								isIphoneX() ? { marginBottom: 16 } : null
-							]}
-						>
-							<Image source={assets.iconPinSolo} style={styles.iconPin} />
-							<Text style={styles.buttonEmptyStateText}>
-								{'Vamos planejar suas viagens ?'}
-							</Text>
-						</View>
-					</TouchableWithoutFeedback>
-				)}
+						<Text style={styles.buttonText}>{'Começar'}</Text>
+					</View>
+				</TouchableWithoutFeedback>
 			</ImageBackground>
 		);
 	}
