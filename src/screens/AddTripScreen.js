@@ -44,7 +44,6 @@ class AddTripScreen extends Component {
 		const tripsAS = await AsyncStorage.getItem('trips');
 		let trips = [];
 		if (tripsAS) {
-			//falsy (null, undefined, 0) - truthy !(null, undefined, 0)
 			trips = JSON.parse(tripsAS);
 		}
 		trips.push(trip);

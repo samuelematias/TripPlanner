@@ -36,16 +36,19 @@ export default StyleSheet.create({
 	tripName: {
 		position: 'absolute',
 		left: 16,
-		bottom: 16
+		bottom: 16,
+		fontSize: 16,
+		fontWeight: 'bold',
+		color: '#FFF'
 	},
 	tripPrice: {
 		position: 'absolute',
 		bottom: 16,
 		right: 16,
 		textAlign: 'right',
-		backgroundColor: '#61BACF',
 		padding: 4,
-		color: 'white'
+		fontWeight: 'bold',
+		color: '#FFF'
 	},
 	list: {
 		flex: 1
@@ -56,8 +59,18 @@ export default StyleSheet.create({
 	},
 	buttonPlus: {
 		position: 'absolute',
-		bottom: 100,
-		right: 20,
+		top: 16,
+		right: 16,
 		padding: 10
+	},
+	wrapperTitleInitials: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	titleInitials: {
+		fontSize: 48,
+		fontWeight: 'bold',
+		color: '#FFF'
 	}
 });

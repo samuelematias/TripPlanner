@@ -108,7 +108,17 @@ class TripDetailScreen extends Component {
 				: 'R$ ' + 0;
 		return (
 			<View style={styles.wrapper}>
-				<View style={styles.header}>
+				<View
+					style={[
+						styles.header,
+						{ backgroundColor: this.props.navigation.state.params.color }
+					]}
+				>
+					<View style={styles.wrapperTitleInitials}>
+						<Text style={styles.titleInitials}>
+							{this.props.navigation.state.params.titleInitials}
+						</Text>
+					</View>
 					<View
 						style={[styles.buttonBack, isIphoneX() ? { paddingTop: 16 } : null]}
 					>
@@ -121,6 +131,7 @@ class TripDetailScreen extends Component {
 							<Image source={assets.iconChevronLeft} />
 						</TouchableOpacity>
 					</View>
+
 					<Text style={styles.tripName}>{trip.trip}</Text>
 					<Text style={styles.tripPrice}>{priceFormatted}</Text>
 					<TouchableOpacity
@@ -130,7 +141,7 @@ class TripDetailScreen extends Component {
 								refresh: this.loadData
 							})
 						}
-						style={styles.buttonPlus}
+						style={[styles.buttonPlus, isIphoneX() ? { paddingTop: 16 } : null]}
 					>
 						<Image source={assets.iconPlus} />
 					</TouchableOpacity>

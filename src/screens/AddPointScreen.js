@@ -12,7 +12,7 @@ import styles from './styles/AddPointScreenStyles';
 
 import { assets } from '../themes';
 
-import { isIphoneX, MoneyFormat } from '../utils';
+import { isIphoneX } from '../utils';
 
 import MapView, { Marker } from 'react-native-maps';
 

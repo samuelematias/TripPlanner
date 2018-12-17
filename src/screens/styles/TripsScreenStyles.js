@@ -17,5 +17,9 @@ export default StyleSheet.create({
 		bottom: 0,
 		right: 20,
 		padding: 10
+	},
+	buttonBack: {
+		position: 'absolute',
+		top: 16
 	}
 });

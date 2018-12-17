@@ -13,7 +13,7 @@ import { assets } from '../themes';
 
 import { Trip } from '../components';
 
-import { isIphoneX, MoneyFormat } from '../utils';
+import { isIphoneX, RandomColor } from '../utils';
 
 import MapView from 'react-native-maps';
 class TripsScreen extends Component {
@@ -25,11 +25,15 @@ class TripsScreen extends Component {
 		super(props);
 
 		this.state = {
-			trips: []
+			trips: [],
+			color: ''
 		};
 	}
 
 	componentDidMount() {
+		this.setState({
+			color: RandomColor().toLowerCase()
+		});
 		this.loadData();
 	}
 
@@ -102,6 +106,26 @@ class TripsScreen extends Component {
 	};
 
 	/**
+	 * Handle to get the titleInitials to the avatar initials
+	 * @author samuelmataraso
+	 * @method _handleTitleInitials
+	 * @param string title
+	 * @returns string
+	 */
+	_handleTitleInitials = title => {
+		let splitTitle = title.split(' ');
+		let titleInitials;
+		if (splitTitle.length > 1) {
+			titleInitials =
+				splitTitle[0].substring(0, 1) + splitTitle[1].substring(0, 1);
+		} else {
+			titleInitials =
+				title.length > 1 ? title.substring(0, 2) : title.substring(0, 1);
+		}
+		return titleInitials.toUpperCase();
+	};
+
+	/**
 	 * Render each one item of flatlist
 	 * @author samuelmataraso
 	 * @method _renderItem
@@ -116,9 +140,15 @@ class TripsScreen extends Component {
 				onPress={() => {
 					this.props.navigation.navigate('TripDetail', {
 						id: item.item.id,
-						refresh: this.loadData
+						refresh: this.loadData,
+						color: this.state.color.includes('fff')
+							? '#944dff'
+							: this.state.color,
+						titleInitials: this._handleTitleInitials(item.item.trip)
 					});
 				}}
+				color={this.state.color.includes('fff') ? '#944dff' : this.state.color}
+				titleInitials={this._handleTitleInitials(item.item.trip)}
 			/>
 		);
 	};
@@ -139,6 +169,17 @@ class TripsScreen extends Component {
 						}}
 						ref={ref => (this.map = ref)}
 					/>
+					<View
+						style={[styles.buttonBack, isIphoneX() ? { paddingTop: 16 } : null]}
+					>
+						<TouchableOpacity
+							onPress={() => {
+								this.props.navigation.goBack();
+							}}
+						>
+							<Image source={assets.iconChevronLeft} />
+						</TouchableOpacity>
+					</View>
 					<TouchableOpacity
 						onPress={() =>
 							this.props.navigation.navigate('AddTrip', {

@@ -11,7 +11,7 @@ import styles from './styles/HomeScreenStyles';
 
 import { assets } from '../themes';
 
-import { isIphoneX, MoneyFormat } from '../utils';
+import { isIphoneX } from '../utils';
 class HomeScreen extends Component {
 	static navigationOptions = {
 		header: null
@@ -26,7 +26,7 @@ class HomeScreen extends Component {
 	}
 
 	/**
-	 * Handle to show the button COMEÇAR ! to Vamos planejar sua primeira viagem
+	 * Handle to show the button Começar to Vamos planejar suas viagens ?
 	 * @author samuelmataraso
 	 * @method _handleShowButton
 	 * @param none
@@ -58,22 +58,23 @@ class HomeScreen extends Component {
 								isIphoneX() ? { paddingBottom: 32 } : null
 							]}
 						>
-							<Text style={styles.buttonText}>{'COMEÇAR!'}</Text>
+							<Text style={styles.buttonText}>{'Começar'}</Text>
 						</View>
 					</TouchableWithoutFeedback>
 				) : (
 					<TouchableWithoutFeedback
 						onPress={() => this.props.navigation.navigate('Trips')}
 					>
-						<View style={styles.buttonEmptyStateBackground}>
-							<Image source={assets.iconPin} style={styles.iconPin} />
+						<View
+							style={[
+								styles.buttonEmptyStateBackground,
+								isIphoneX() ? { marginBottom: 16 } : null
+							]}
+						>
+							<Image source={assets.iconPinSolo} style={styles.iconPin} />
 							<Text style={styles.buttonEmptyStateText}>
-								{'Vamos planejar sua primeira viagem ?'}
+								{'Vamos planejar suas viagens ?'}
 							</Text>
-							<Image
-								source={assets.iconArrowRight}
-								style={isIphoneX() ? { marginBottom: 16 } : null}
-							/>
 						</View>
 					</TouchableWithoutFeedback>
 				)}

@@ -19,19 +19,21 @@ export default StyleSheet.create({
 		paddingBottom: 32
 	},
 	buttonBackground: {
-		backgroundColor: '#fff',
+		backgroundColor: 'rgba(97, 186, 207, 0.7)',
 		paddingBottom: 16,
-		paddingTop: 16
+		paddingTop: 16,
+		opacity: 10
 	},
 	buttonText: {
 		textAlign: 'center',
-		fontSize: 18
+		fontSize: 18,
+		color: '#FFF'
 	},
 	iconPin: {
-		marginBottom: 16
+		marginBottom: 8
 	},
 	buttonEmptyStateBackground: {
-		backgroundColor: '#fff',
+		backgroundColor: 'rgba(97, 186, 207, 0.7)',
 		paddingBottom: 16,
 		paddingTop: 16,
 		alignItems: 'center'
@@ -39,6 +41,7 @@ export default StyleSheet.create({
 	buttonEmptyStateText: {
 		textAlign: 'center',
 		fontSize: 18,
-		width: 220
+		width: 220,
+		color: '#FFF'
 	}
 });
