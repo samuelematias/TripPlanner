@@ -11,7 +11,7 @@ import styles from './styles/HomeScreenStyles';
 
 import { assets } from '../themes';
 
-import isIphoneX from '../utils/IsIphoneX';
+import { isIphoneX, MoneyFormat } from '../utils';
 class HomeScreen extends Component {
 	static navigationOptions = {
 		header: null

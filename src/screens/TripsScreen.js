@@ -13,7 +13,7 @@ import { assets } from '../themes';
 
 import { Trip } from '../components';
 
-import isIphoneX from '../utils/IsIphoneX';
+import { isIphoneX, MoneyFormat } from '../utils';
 
 import MapView from 'react-native-maps';
 class TripsScreen extends Component {

@@ -12,7 +12,7 @@ import styles from './styles/TripDetailScreenStyles';
 
 import { assets } from '../themes';
 
-import isIphoneX from '../utils/IsIphoneX';
+import { isIphoneX, MoneyFormat } from '../utils';
 
 class TripDetailScreen extends Component {
 	static navigationOptions = {
@@ -82,6 +82,10 @@ class TripDetailScreen extends Component {
 	 * @returns func
 	 */
 	_renderItem = item => {
+		const priceFormatted =
+			item.item.price && item.item.price > 0
+				? MoneyFormat(item.item.price.toFixed(2))
+				: 'R$ ' + 0;
 		return (
 			<View style={styles.item}>
 				<View style={styles.wrapperInfo}>
@@ -89,9 +93,7 @@ class TripDetailScreen extends Component {
 					<Text>{item.item.description}</Text>
 				</View>
 				<View style={styles.wrapperItemPrice}>
-					<Text style={styles.itemPrice}>
-						{'R$ ' + item.item.price.toFixed(2)}
-					</Text>
+					<Text style={styles.itemPrice}>{priceFormatted}</Text>
 				</View>
 			</View>
 		);
@@ -100,6 +102,10 @@ class TripDetailScreen extends Component {
 	render() {
 		const { points, trip } = this.state;
 		const id = this.props.navigation.state.params.id;
+		const priceFormatted =
+			trip.price && trip.price > 0
+				? MoneyFormat(trip.price.toFixed(2))
+				: 'R$ ' + 0;
 		return (
 			<View style={styles.wrapper}>
 				<View style={styles.header}>
@@ -116,9 +122,7 @@ class TripDetailScreen extends Component {
 						</TouchableOpacity>
 					</View>
 					<Text style={styles.tripName}>{trip.trip}</Text>
-					<Text style={styles.tripPrice}>
-						{'R$ ' + parseFloat(trip.price).toFixed(2)}
-					</Text>
+					<Text style={styles.tripPrice}>{priceFormatted}</Text>
 					<TouchableOpacity
 						onPress={() =>
 							this.props.navigation.navigate('AddPoint', {
