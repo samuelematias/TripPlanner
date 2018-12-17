@@ -11,7 +11,8 @@
 		"react-native": "0.57.8",
 		"react-native-gesture-handler": "^1.0.12",
 		"react-native-maps": "^0.22.1",
-		"react-navigation": "^3.0.8"
+		"react-navigation": "^3.0.8",
+		"vanilla-masker": "^1.2.0"
 	},
 	"devDependencies": {
 		"babel-jest": "23.6.0",
