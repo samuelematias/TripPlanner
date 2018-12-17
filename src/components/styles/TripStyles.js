@@ -15,7 +15,7 @@ export default StyleSheet.create({
 		marginBottom: 6,
 		alignItems: 'center',
 		justifyContent: 'flex-start',
-		paddingTop: 16,
+		paddingTop: 10,
 		borderRadius: 10
 	},
 	price: {
@@ -61,5 +61,22 @@ export default StyleSheet.create({
 	},
 	wrapperTitle: {
 		flexDirection: 'row'
+	},
+	wrapperChangeColor: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		marginLeft: 3
+	},
+	wrapperChangeColorButton: {
+		paddingLeft: 5
+	},
+	iconRefresh: {
+		width: 25,
+		height: 25
+	},
+	changeColorText: {
+		textAlign: 'right',
+		color: 'black',
+		fontWeight: '600'
 	}
 });

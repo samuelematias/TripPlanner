@@ -5,7 +5,8 @@ import {
 	TextInput,
 	Image,
 	Text,
-	AsyncStorage
+	AsyncStorage,
+	ScrollView
 } from 'react-native';
 
 import styles from './styles/AddPointScreenStyles';
@@ -32,7 +33,7 @@ class AddPointScreen extends Component {
 			},
 			pointName: '',
 			description: '',
-			price: 0
+			price: null
 		};
 	}
 
@@ -81,6 +82,11 @@ class AddPointScreen extends Component {
 	};
 
 	render() {
+		const { pointName, description, price } = this.state;
+		const { navigation } = this.props;
+		const { state } = navigation;
+		const { params } = state;
+		const isDisabled = !pointName || !description || !price ? true : false;
 		return (
 			<View style={styles.wrapper}>
 				<View style={styles.header}>
@@ -111,49 +117,66 @@ class AddPointScreen extends Component {
 							<Image source={assets.iconChevronLeft} />
 						</TouchableOpacity>
 					</View>
-					<Text style={styles.tripName}>{'Eurotrip: 2019'}</Text>
-					<Text style={styles.tripPrice}>{'R$ 5000'}</Text>
 				</View>
-				<View style={styles.wrapperInput}>
-					<View>
-						<TextInput
-							style={styles.input}
-							placeholder={'Nome do ponto'}
-							onChangeText={txt =>
-								this.setState({
-									pointName: txt
-								})
-							}
-						/>
-						<TextInput
-							style={styles.input}
-							placeholder={'Descrição'}
-							onChangeText={txt =>
-								this.setState({
-									description: txt
-								})
-							}
-						/>
-						<TextInput
-							style={styles.input}
-							placeholder={'Valor R$'}
-							keyboardType={'numeric'}
-							onChangeText={num =>
-								this.setState({
-									price: parseFloat(num)
-								})
-							}
-						/>
-						<TouchableOpacity
-							onPress={() => {
-								this._handleSave();
-							}}
-							style={styles.button}
-						>
-							<Text>{'Salvar ponto'}</Text>
-						</TouchableOpacity>
+				<ScrollView>
+					<View style={styles.wrapperHeader}>
+						<View style={{ width: 200 }}>
+							<Text style={styles.add} numberOfLines={2} ellipsizeMode={'tail'}>
+								{'Adicionar um ponto na sua viagem no(a) : '}
+							</Text>
+						</View>
+						<View style={{ paddingTop: 5 }}>
+							<Text style={styles.where}>{params.trip.trip}</Text>
+						</View>
 					</View>
-				</View>
+					<View style={styles.wrapperInput}>
+						<View>
+							<TextInput
+								style={styles.input}
+								placeholder={'Nome do ponto'}
+								placeholderTextColor={'#222222'}
+								onChangeText={txt =>
+									this.setState({
+										pointName: txt
+									})
+								}
+							/>
+							<View style={styles.line} />
+							<TextInput
+								style={styles.input}
+								placeholder={'Descrição'}
+								placeholderTextColor={'#222222'}
+								onChangeText={txt =>
+									this.setState({
+										description: txt
+									})
+								}
+							/>
+							<TextInput
+								style={styles.input}
+								placeholder={'Valor R$'}
+								keyboardType={'numeric'}
+								placeholderTextColor={'#222222'}
+								onChangeText={num =>
+									this.setState({
+										price: parseFloat(num)
+									})
+								}
+							/>
+							<TouchableOpacity
+								onPress={() => {
+									this._handleSave();
+								}}
+								style={isDisabled ? styles.buttonOff : styles.buttonOn}
+								disabled={isDisabled}
+							>
+								<Text style={{ color: '#ffffff', fontWeight: 'bold' }}>
+									{'Salvar ponto'}
+								</Text>
+							</TouchableOpacity>
+						</View>
+					</View>
+				</ScrollView>
 			</View>
 		);
 	}

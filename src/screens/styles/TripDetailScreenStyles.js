@@ -50,6 +50,23 @@ export default StyleSheet.create({
 		fontWeight: 'bold',
 		color: '#FFF'
 	},
+	tripNameTitle: {
+		position: 'absolute',
+		left: 16,
+		bottom: 38,
+		fontSize: 16,
+		fontWeight: 'bold',
+		color: '#FFF'
+	},
+	tripPriceTitle: {
+		position: 'absolute',
+		bottom: 38,
+		right: 50,
+		textAlign: 'right',
+		padding: 4,
+		fontWeight: 'bold',
+		color: '#FFF'
+	},
 	list: {
 		flex: 1
 	},

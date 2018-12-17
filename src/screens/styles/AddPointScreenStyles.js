@@ -60,14 +60,39 @@ export default StyleSheet.create({
 		marginLeft: 16
 	},
 	input: {
-		backgroundColor: '#C4C4C4',
-		padding: 20,
-		marginBottom: 16
-	},
-	button: {
-		backgroundColor: '#C4C4C4',
+		backgroundColor: '#ececec',
 		padding: 20,
 		marginBottom: 16,
-		alignItems: 'center'
+		borderRadius: 5
+	},
+	buttonOn: {
+		backgroundColor: '#61BACF',
+		padding: 20,
+		marginBottom: 16,
+		alignItems: 'center',
+		borderRadius: 5
+	},
+	buttonOff: {
+		backgroundColor: '#ececec',
+		padding: 20,
+		marginBottom: 16,
+		alignItems: 'center',
+		borderRadius: 5
+	},
+	add: {
+		fontWeight: 'bold',
+		fontSize: 18
+	},
+	where: {
+		color: '#61BACF',
+		fontWeight: 'bold',
+		fontSize: 24
+	},
+	wrapperHeader: {
+		marginTop: 16,
+		marginRight: 16,
+		marginLeft: 16,
+		alignItems: 'flex-start',
+		justifyContent: 'center'
 	}
 });

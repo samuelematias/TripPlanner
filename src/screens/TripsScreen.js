@@ -149,6 +149,11 @@ class TripsScreen extends Component {
 				}}
 				color={this.state.color.includes('fff') ? '#944dff' : this.state.color}
 				titleInitials={this._handleTitleInitials(item.item.trip)}
+				changeColor={() => {
+					this.setState({
+						color: RandomColor().toLowerCase()
+					});
+				}}
 			/>
 		);
 	};

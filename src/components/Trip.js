@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 
 import styles from './styles/TripStyles';
 
-import { MoneyFormat } from '../utils';
+import { assets } from '../themes';
+
+import { MoneyFormat, RandomColor } from '../utils';
 
 const Trip = props => {
 	const priceFormatted =
@@ -14,6 +16,14 @@ const Trip = props => {
 		<TouchableOpacity style={styles.wrapperTrip} onPress={props.onPress}>
 			<View style={[styles.image, { backgroundColor: props.color }]}>
 				<Text style={styles.titleInitials}>{props.titleInitials} </Text>
+			</View>
+			<View style={styles.wrapperChangeColor}>
+				<Text style={styles.changeColorText}>{'Trocar Cor ?'}</Text>
+				<View style={styles.wrapperChangeColorButton}>
+					<TouchableOpacity onPress={props.changeColor}>
+						<Image source={assets.iconRefresh} style={styles.iconRefresh} />
+					</TouchableOpacity>
+				</View>
 			</View>
 			<Text style={styles.cost}>{'Custo total da viagem: '}</Text>
 			<Text style={styles.price}>{priceFormatted}</Text>

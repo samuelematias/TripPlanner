@@ -7,7 +7,8 @@ const images = {
 	iconPin: require('../../assets/icon-pin.png'),
 	iconChevronLeft: require('../../assets/icon-chevron-left.png'),
 	iconPlus: require('../../assets/icon-plus.png'),
-	iconPinSolo: require('../../assets/icon-pin-solo.png')
+	iconPinSolo: require('../../assets/icon-pin-solo.png'),
+	iconRefresh: require('../../assets/icon-refresh.png')
 };
 
 export default images;

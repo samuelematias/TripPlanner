@@ -5,7 +5,8 @@ import {
 	FlatList,
 	TouchableOpacity,
 	Image,
-	AsyncStorage
+	AsyncStorage,
+	ScrollView
 } from 'react-native';
 
 import styles from './styles/TripDetailScreenStyles';
@@ -131,14 +132,16 @@ class TripDetailScreen extends Component {
 							<Image source={assets.iconChevronLeft} />
 						</TouchableOpacity>
 					</View>
-
+					<Text style={styles.tripNameTitle}>{'Viagem : '}</Text>
 					<Text style={styles.tripName}>{trip.trip}</Text>
+					<Text style={styles.tripPriceTitle}>{'Custo : '}</Text>
 					<Text style={styles.tripPrice}>{priceFormatted}</Text>
 					<TouchableOpacity
 						onPress={() =>
 							this.props.navigation.navigate('AddPoint', {
 								id: id,
-								refresh: this.loadData
+								refresh: this.loadData,
+								trip: trip
 							})
 						}
 						style={[styles.buttonPlus, isIphoneX() ? { paddingTop: 16 } : null]}
