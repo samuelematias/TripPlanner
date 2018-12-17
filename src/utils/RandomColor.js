@@ -1,5 +1,5 @@
 /**
- * aotu-generator of colors HEX
+ * auto-generator of colors HEX
  * @author samuelmataraso
  * @method RandomColor
  * @param none
