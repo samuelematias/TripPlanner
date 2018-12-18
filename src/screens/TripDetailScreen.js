@@ -5,8 +5,7 @@ import {
 	FlatList,
 	TouchableOpacity,
 	Image,
-	AsyncStorage,
-	ScrollView
+	AsyncStorage
 } from 'react-native';
 
 import styles from './styles/TripDetailScreenStyles';
@@ -61,11 +60,24 @@ class TripDetailScreen extends Component {
 
 		let trip = {
 			trip: '',
-			price: 0
+			price: 0,
+			latitude: null,
+			longitude: null,
+			created_at: null,
+			updated_at: null
 		};
 		trips.forEach(t => {
 			if (t.id === id) {
-				(trip.trip = t.trip), (trip.price = t.price ? t.price : 0);
+				(trip.trip = t.trip),
+					(trip.price = t.price ? t.price : 0),
+					(trip.latitude = t.latitude ? t.latitude : 37.78825),
+					(trip.longitude = t.longitude ? t.longitude : -122.4324),
+					(trip.created_at = t.created_at
+						? t.created_at
+						: new Date().getTime()),
+					(trip.updated_at = t.updated_at
+						? t.updated_at
+						: new Date().getTime());
 			}
 		});
 
@@ -132,16 +144,20 @@ class TripDetailScreen extends Component {
 							<Image source={assets.iconChevronLeft} />
 						</TouchableOpacity>
 					</View>
-					<Text style={styles.tripNameTitle}>{'Viagem : '}</Text>
+					<Text style={styles.tripNameTitle}>{'Viajando para:'}</Text>
 					<Text style={styles.tripName}>{trip.trip}</Text>
-					<Text style={styles.tripPriceTitle}>{'Custo : '}</Text>
+					<Text style={styles.tripPriceTitle}>{'Custo total da viagem:'}</Text>
 					<Text style={styles.tripPrice}>{priceFormatted}</Text>
 					<TouchableOpacity
 						onPress={() =>
 							this.props.navigation.navigate('AddPoint', {
 								id: id,
 								refresh: this.loadData,
-								trip: trip
+								trip: trip,
+								latitude: trip.latitude,
+								longitude: trip.longitude,
+								color: this.props.navigation.state.params.color,
+								titleInitials: this.props.navigation.state.params.titleInitials
 							})
 						}
 						style={[styles.buttonPlus, isIphoneX() ? { paddingTop: 16 } : null]}

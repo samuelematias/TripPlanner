@@ -15,7 +15,7 @@ import { Trip } from '../components';
 
 import { isIphoneX, RandomColor } from '../utils';
 
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 class TripsScreen extends Component {
 	static navigationOptions = {
 		header: null
@@ -26,7 +26,9 @@ class TripsScreen extends Component {
 
 		this.state = {
 			trips: [],
-			color: ''
+			color: 'red',
+			lat: 37.78825,
+			lon: -122.4324
 		};
 	}
 
@@ -97,6 +99,8 @@ class TripsScreen extends Component {
 			)
 		);
 
+		this.setState({ lat, lon });
+
 		return (result = {
 			latitude: lat,
 			longitude: lon,
@@ -113,14 +117,19 @@ class TripsScreen extends Component {
 	 * @returns string
 	 */
 	_handleTitleInitials = title => {
-		let splitTitle = title.split(' ');
+		let cleanStr = title
+			.replace(/[^\w\s]/gi, '')
+			.replace(/[._,_?_!_;_:_"_'_\s]/g, '');
+		let splitTitle = cleanStr.split(' ');
 		let titleInitials;
 		if (splitTitle.length > 1) {
 			titleInitials =
 				splitTitle[0].substring(0, 1) + splitTitle[1].substring(0, 1);
 		} else {
 			titleInitials =
-				title.length > 1 ? title.substring(0, 2) : title.substring(0, 1);
+				cleanStr.length > 1
+					? cleanStr.substring(0, 2)
+					: cleanStr.substring(0, 1);
 		}
 		return titleInitials.toUpperCase();
 	};
@@ -159,8 +168,18 @@ class TripsScreen extends Component {
 	};
 
 	render() {
-		const { trips } = this.state;
-
+		const { trips, lat, lon } = this.state;
+		//sort the flatlist item by updated_at desc
+		const tripsSort = trips.sort(function(a, b) {
+			if (b.updated_at > a.updated_at) {
+				return 1;
+			}
+			if (b.updated_at < a.updated_at) {
+				return -1;
+			}
+			// a must be equal to b
+			return 0;
+		});
 		return (
 			<View style={styles.container}>
 				<View style={styles.wrapperMapa}>
@@ -173,7 +192,14 @@ class TripsScreen extends Component {
 							longitudeDelta: 0.0421
 						}}
 						ref={ref => (this.map = ref)}
-					/>
+					>
+						<Marker
+							coordinate={{
+								latitude: lat,
+								longitude: lon
+							}}
+						/>
+					</MapView>
 					<View
 						style={[styles.buttonBack, isIphoneX() ? { paddingTop: 16 } : null]}
 					>
@@ -198,7 +224,7 @@ class TripsScreen extends Component {
 				</View>
 				<View style={styles.wrapperList}>
 					<FlatList
-						data={trips}
+						data={tripsSort}
 						renderItem={this._renderItem}
 						horizontal
 						pagingEnabled

@@ -61,7 +61,7 @@ export default StyleSheet.create({
 	tripPriceTitle: {
 		position: 'absolute',
 		bottom: 38,
-		right: 50,
+		right: 16,
 		textAlign: 'right',
 		padding: 4,
 		fontWeight: 'bold',

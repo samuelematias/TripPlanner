@@ -17,6 +17,8 @@ import { isIphoneX } from '../utils';
 
 import MapView, { Marker } from 'react-native-maps';
 
+import { StackActions, NavigationActions } from 'react-navigation';
+
 class AddPointScreen extends Component {
 	static navigationOptions = {
 		header: null
@@ -49,7 +51,15 @@ class AddPointScreen extends Component {
 	 * @returns json
 	 */
 	_handleSave = async () => {
-		const id = this.props.navigation.state.params.id;
+		const { navigation } = this.props;
+		const { state } = navigation;
+		const { params } = state;
+		const id = params.id;
+		const latitude = params.latitude;
+		const longitude = params.longitude;
+		const refresh = params.refresh;
+		const color = params.color;
+		const titleInitials = params.titleInitials;
 		const pointsAS = await AsyncStorage.getItem('trip-' + id);
 		let points = [];
 		if (pointsAS) {
@@ -71,14 +81,34 @@ class AddPointScreen extends Component {
 		trips.forEach((trip, index) => {
 			if (trip.id === id) {
 				trips[index].price = total;
-				trips[index].latitude = points[0].position.latitude;
-				trips[index].longitude = points[0].position.longitude;
+				trips[index].latitude = latitude;
+				trips[index].longitude = longitude;
+				trips[index].updated_at = new Date().getTime();
 			}
 		});
 
 		await AsyncStorage.setItem('trips', JSON.stringify(trips));
 		this.props.navigation.state.params.refresh();
-		this.props.navigation.goBack();
+
+		//reset the stackScreens, to the first screen Home, second screen Trips and third screen TripDetail, in this case.
+		const resetAction = StackActions.reset({
+			index: 2,
+			actions: [
+				NavigationActions.navigate({ routeName: 'Home' }),
+				NavigationActions.navigate({ routeName: 'Trips' }),
+				NavigationActions.navigate({
+					routeName: 'TripDetail',
+					params: {
+						id,
+						refresh,
+						color,
+						titleInitials
+					}
+				})
+			]
+		});
+
+		navigation.dispatch(resetAction);
 	};
 
 	render() {
@@ -86,6 +116,8 @@ class AddPointScreen extends Component {
 		const { navigation } = this.props;
 		const { state } = navigation;
 		const { params } = state;
+		const latitude = params.latitude;
+		const longitude = params.longitude;
 		const isDisabled = !pointName || !description || !price ? true : false;
 		return (
 			<View style={styles.wrapper}>
@@ -93,18 +125,17 @@ class AddPointScreen extends Component {
 					<MapView
 						style={{ flex: 1 }}
 						initialRegion={{
-							latitude: 37.78825,
-							longitude: -122.4324,
+							latitude: latitude,
+							longitude: longitude,
 							latitudeDelta: 0.0922,
 							longitudeDelta: 0.0421
 						}}
 					>
 						<Marker
 							coordinate={{
-								latitude: 37.78825,
-								longitude: -122.4324
+								latitude: latitude,
+								longitude: longitude
 							}}
-							draggable
 							onDragEnd={evt =>
 								this.setState({ position: evt.nativeEvent.coordinate })
 							}
@@ -141,7 +172,6 @@ class AddPointScreen extends Component {
 									})
 								}
 							/>
-							<View style={styles.line} />
 							<TextInput
 								style={styles.input}
 								placeholder={'Descrição'}

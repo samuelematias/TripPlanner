@@ -25,7 +25,7 @@ const Trip = props => {
 					</TouchableOpacity>
 				</View>
 			</View>
-			<Text style={styles.cost}>{'Custo total da viagem: '}</Text>
+			<Text style={styles.cost}>{'Custo total da viagem:'}</Text>
 			<Text style={styles.price}>{priceFormatted}</Text>
 			<Text style={styles.title}>{'Viajando para:'}</Text>
 			<Text style={styles.trip}>{props.title}</Text>

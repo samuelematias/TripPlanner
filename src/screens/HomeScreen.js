@@ -5,7 +5,8 @@ import {
 	ImageBackground,
 	Image,
 	TouchableWithoutFeedback,
-	Button
+	AsyncStorage,
+	ActivityIndicator
 } from 'react-native';
 
 import styles from './styles/HomeScreenStyles';
@@ -13,8 +14,6 @@ import styles from './styles/HomeScreenStyles';
 import { assets } from '../themes';
 
 import { isIphoneX } from '../utils';
-
-import RNGooglePlaces from 'react-native-google-places';
 
 class HomeScreen extends Component {
 	static navigationOptions = {
@@ -24,18 +23,37 @@ class HomeScreen extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {};
+		this.state = {
+			trips: [],
+			check: false
+		};
 	}
 
-	openSearchModal() {
-		RNGooglePlaces.openAutocompleteModal()
-			.then(place => {
-				console.log(place);
-			})
-			.catch(error => console.log(error.message));
+	componentDidMount() {
+		this.loadData();
 	}
+
+	/**
+	 * Load the data of phoneStorage to be used.
+	 * @author samuelmataraso
+	 * @method loadData
+	 * @param none
+	 * @returns state
+	 */
+	loadData = async () => {
+		const tripsAS = await AsyncStorage.getItem('trips');
+		let trips = [];
+		if (tripsAS) {
+			trips = JSON.parse(tripsAS);
+		}
+		this.setState({
+			trips,
+			check: true
+		});
+	};
 
 	render() {
+		const { trips, check } = this.state;
 		return (
 			<ImageBackground
 				source={assets.imgBackground}
@@ -49,7 +67,13 @@ class HomeScreen extends Component {
 					<Image source={assets.lgDevPleno} />
 				</View>
 				<TouchableWithoutFeedback
-					onPress={() => this.props.navigation.navigate('modal')}
+					onPress={() =>
+						this.props.navigation.navigate('modal', {
+							trips,
+							check,
+							refresh: this.loadData
+						})
+					}
 				>
 					<View
 						style={[

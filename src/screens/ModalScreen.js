@@ -34,6 +34,14 @@ class ModalScreen extends Component {
 	 * @returns func
 	 */
 	_renderDialogPopup = () => {
+		const { navigation } = this.props;
+		const { state } = navigation;
+		const { params } = state;
+		const refresh = params.refresh;
+		const noData =
+			(!params.trips || params.trips.length === 0) && params.check
+				? true
+				: false;
 		return (
 			<View style={styles.wrapperPlanningTrip}>
 				<Image source={assets.iconPinSolo} />
@@ -43,7 +51,14 @@ class ModalScreen extends Component {
 				<View style={styles.wrapperOptions}>
 					<View>
 						<TouchableWithoutFeedback
-							onPress={() => this.props.navigation.navigate('Trips')}
+							onPress={() =>
+								noData
+									? this.props.navigation.navigate('AddTrip', {
+											refresh: refresh,
+											noData: noData
+									  })
+									: this.props.navigation.navigate('Trips')
+							}
 						>
 							<Text style={styles.buttonText}>{'Sim, Vamos lá !'}</Text>
 						</TouchableWithoutFeedback>

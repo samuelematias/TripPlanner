@@ -8,7 +8,9 @@ const images = {
 	iconChevronLeft: require('../../assets/icon-chevron-left.png'),
 	iconPlus: require('../../assets/icon-plus.png'),
 	iconPinSolo: require('../../assets/icon-pin-solo.png'),
-	iconRefresh: require('../../assets/icon-refresh.png')
+	iconRefresh: require('../../assets/icon-refresh.png'),
+	iconAddTrip: require('../../assets/icon-add-trip.png'),
+	iconSearchOnMap: require('../../assets/icon_search_on_map.png')
 };
 
 export default images;
