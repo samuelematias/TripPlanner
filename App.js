@@ -27,6 +27,8 @@ export const AppNavigator = createStackNavigator(
 		headerMode: 'none',
 		mode: 'modal',
 		initialRouteName: 'content',
+		animationEnabled: false,
+		swipeEnabled: false,
 		transparentCard: true,
 		transitionConfig: () => ({
 			transitionSpec: {

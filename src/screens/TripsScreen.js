@@ -4,7 +4,9 @@ import {
 	TouchableOpacity,
 	FlatList,
 	Image,
-	AsyncStorage
+	AsyncStorage,
+	BackHandler,
+	Platform
 } from 'react-native';
 
 import styles from './styles/TripsScreenStyles';
@@ -14,7 +16,7 @@ import { assets } from '../themes';
 import { Trip } from '../components';
 
 import { isIphoneX, RandomColor } from '../utils';
-
+import { withNavigationFocus } from 'react-navigation';
 import MapView, { Marker } from 'react-native-maps';
 class TripsScreen extends Component {
 	static navigationOptions = {
@@ -36,7 +38,30 @@ class TripsScreen extends Component {
 		this.setState({
 			color: RandomColor().toLowerCase()
 		});
+
 		this.loadData();
+	}
+
+	componentDidUpdate() {
+		//process to disable the back button of android on TripScreen.
+		if (Platform.OS !== 'ios') {
+			this.backHandler = BackHandler.addEventListener(
+				'hardwareBackPress',
+				() => {
+					if (this.props.isFocused) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+			);
+		}
+	}
+
+	componentWillUnmount() {
+		if (Platform.OS !== 'ios') {
+			this.backHandler.remove();
+		}
 	}
 
 	/**
@@ -200,17 +225,6 @@ class TripsScreen extends Component {
 							}}
 						/>
 					</MapView>
-					<View
-						style={[styles.buttonBack, isIphoneX() ? { paddingTop: 16 } : null]}
-					>
-						<TouchableOpacity
-							onPress={() => {
-								this.props.navigation.goBack();
-							}}
-						>
-							<Image source={assets.iconChevronLeft} />
-						</TouchableOpacity>
-					</View>
 					<TouchableOpacity
 						onPress={() =>
 							this.props.navigation.navigate('AddTrip', {
@@ -238,4 +252,4 @@ class TripsScreen extends Component {
 	}
 }
 
-export default TripsScreen;
+export default withNavigationFocus(TripsScreen);
