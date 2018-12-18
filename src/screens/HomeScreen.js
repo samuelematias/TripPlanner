@@ -13,6 +13,9 @@ import styles from './styles/HomeScreenStyles';
 import { assets } from '../themes';
 
 import { isIphoneX } from '../utils';
+
+import RNGooglePlaces from 'react-native-google-places';
+
 class HomeScreen extends Component {
 	static navigationOptions = {
 		header: null
@@ -22,6 +25,14 @@ class HomeScreen extends Component {
 		super(props);
 
 		this.state = {};
+	}
+
+	openSearchModal() {
+		RNGooglePlaces.openAutocompleteModal()
+			.then(place => {
+				console.log(place);
+			})
+			.catch(error => console.log(error.message));
 	}
 
 	render() {

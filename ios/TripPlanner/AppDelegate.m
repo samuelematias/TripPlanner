@@ -6,9 +6,11 @@
  */
 
 #import "AppDelegate.h"
-
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+
+@import GooglePlaces;
+@import GoogleMaps;
 
 @implementation AppDelegate
 
@@ -21,7 +23,8 @@
   #else
     jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
   #endif
-
+  [GMSPlacesClient provideAPIKey:@"AIzaSyBVjBw4MBsE0EnjfmMko2IgicKIn3HmeUo"];
+  [GMSServices provideAPIKey:@"AIzaSyBVjBw4MBsE0EnjfmMko2IgicKIn3HmeUo"];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"TripPlanner"
                                                initialProperties:nil
