@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://imgur.com/Fo5zJgd.png" height="224" /><br/>
-  <span>Application Developed full with React Native</span><br/>
-  <span>Work on both mobile platform, Android & iOS </span><br/>
+  <span>Application Developed full with <b>React Native</b></span><br/>
+  <span>Work on both mobile platform, <b>Android</b> & <b>iOS</b> </span><br/>
 </p>
   
 <p align="center">
@@ -24,7 +24,7 @@
 ## About the TripPlanner app development
 
 This app was developed by a Hands on [devPleno](https://www.devpleno.com/) by [Tulio Faria](https://www.devpleno.com/sobre/).
-However, more features and improvements have been added in the UI for [me](https://github.com/samuelmataraso).
+However, more features and improvements have been added in the UI for <a href="mailto:jsamuelmataraso@gmail.com">me</a>.
 
 ## What is this app for? ??
 
