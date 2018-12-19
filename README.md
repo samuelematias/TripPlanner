@@ -48,8 +48,6 @@ TripPlanner is a app to register your trips and points with your financial costs
 
 <br/>
 
-<br/>
-
 ## Tech Stack
 
 - [React Native](https://github.com/facebook/react-native)
@@ -66,6 +64,8 @@ TripPlanner is a app to register your trips and points with your financial costs
 <br/>
 
 > Note: Where is the app data being saved 🤨 ? In the phone storage 📲 by AsyncStorage 🔄 🤩.
+
+<br/>
 
 ### Running it locally
 
@@ -88,9 +88,11 @@ I wish I could contribute my knowledge in React Native with open-source projects
 
 Then you can wait, because more things have been seen!
 
-Contact me by [email](samuelmataraso@gmailcom) !
+Contact me by <a href="mailto:jsamuelmataraso@gmail.com">email</a> !
 
 > Note: Will this app be made available in-store (Apple Store/ Play Store) 🤔 ? perhaps in the near future, after some improvement 👨‍💻.
+
+<br/>
 
 ## Author
 
