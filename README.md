@@ -1,13 +1,13 @@
 <p align="center">
   <img src="https://imgur.com/Fo5zJgd.png" height="224" /><br/>
-  <span>Application Developed full with <b>React Native</b></span><br/>
-  <span>Work on both mobile platform, <b>Android</b> & <b>iOS</b> </span><br/>
+  <span>Application Developed with <b>React Native</b></span><br/>
+  <span>Running on both mobile platforms, <b>Android</b> & <b>iOS</b> </span><br/>
 </p>
   
 <p align="center">
   <a href="https://devhubapp.com/" target="_blank">
   <img alt="TripPlanner - Home" height="620" src="https://i.imgur.com/GLEBsqG.png" />
-  <img alt="TripPlanner - Let's go Trip! " height="620" src="https://i.imgur.com/wRPUHyT.png" />
+  <img alt="TripPlanner - Let's go Trip! " height="620" src="https://imgur.com/FiWrrLo.png" />
   <img alt="TripPlanner - Add a Trip" height="620" src="https://i.imgur.com/wRPUHyT.png" />
   <img alt="TripPlanner - Choose your destiny Trip" height="620" src="https://i.imgur.com/T1OzZlu.png" />
   <img alt="TripPlanner - Trip Added" height="620" src="https://i.imgur.com/DU5kE0l.png" />
@@ -89,6 +89,8 @@ I wish I could contribute my knowledge in React Native with open-source projects
 Then you can wait, because more things have been seen!
 
 Contact me by <a href="mailto:samuelmataraso@gmail.com">email</a> !
+
+<br/>
 
 > Note: Will this app be made available in-store (Apple Store/ Play Store) 🤔 ? perhaps in the near future, after some improvement 👨‍💻.
 
