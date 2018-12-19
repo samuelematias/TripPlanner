@@ -1,7 +1,5 @@
 <p align="center">
   <img src="https://imgur.com/Fo5zJgd.png" height="224" /><br/>
-  <span><b>TripPlanner</b><br/>:
-  <span>Application developed from the Hands on in</span><a href="https://www.devpleno.com/" target="_blank">devpleno.com</a> 
   <span>Application Developed full with React Native</span><br/>
   <span>Work on both mobile platform, Android & iOS </span><br/>
 </p>
