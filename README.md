@@ -24,7 +24,7 @@
 ## About the TripPlanner app development
 
 This app was developed by a Hands on [devPleno](https://www.devpleno.com/) by [Tulio Faria](https://www.devpleno.com/sobre/).
-However, more features and improvements have been added in the UI for <a href="mailto:jsamuelmataraso@gmail.com">me</a>.
+However, more features and improvements have been added in the UI for [me](https://github.com/samuelmataraso).
 
 ## What is this app for? ??
 
@@ -44,7 +44,7 @@ TripPlanner is a app to register your trips and points with your financial costs
 - [ ] **Edit Point**: You will be able to edit a point;
 - [ ] **Archived Trip**: You will be able to archived a trip;
 
-> Which one do you want first 🤨 ? Any other recommendations 🤔 ? Send me [email](samuelmataraso@gmailcom) with subject "Trip Planner" with your suggestion 👍 .
+> Which one do you want first 🤨 ? Any other recommendations 🤔 ? Send me a <a href="mailto:jsamuelmataraso@gmail.com">email</a> with subject "Trip Planner" with your suggestion 👍 .
 
 <br/>
 
