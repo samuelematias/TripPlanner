@@ -23,7 +23,7 @@
 
 ## About the TripPlanner app development
 
-This app was developed by a Hands on [devPleno](https://www.devpleno.com/) by [Tulio Faria](https://www.devpleno.com/sobre/).
+This app was developed by a Hands on [devPleno](https://www.devpleno.com/) by [Tulio Faria](https://www.devpleno.com/sobre/).<br/>
 However, new features and improvements on code and UI were made by [me](https://github.com/samuelmataraso).
 
 ## What is this app for? ??
