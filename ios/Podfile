@@ -11,5 +11,7 @@ target 'TripPlanner' do
   pod 'GooglePlaces' 
   pod 'GooglePlacePicker'
 
+  #pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
 end
 

@@ -12,6 +12,7 @@
 		"react-native-gesture-handler": "^1.0.12",
 		"react-native-google-places": "^2.5.2",
 		"react-native-maps": "^0.22.1",
+		"react-native-splash-screen": "3.0.6",
 		"react-navigation": "^3.0.8",
 		"vanilla-masker": "^1.2.0"
 	},

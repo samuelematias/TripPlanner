@@ -6,7 +6,7 @@ import {
 	Image,
 	TouchableWithoutFeedback,
 	AsyncStorage,
-	ActivityIndicator
+	Platform
 } from 'react-native';
 
 import styles from './styles/HomeScreenStyles';
@@ -15,6 +15,7 @@ import { assets } from '../themes';
 
 import { isIphoneX } from '../utils';
 
+import SplashScreen from 'react-native-splash-screen';
 class HomeScreen extends Component {
 	static navigationOptions = {
 		header: null
@@ -30,6 +31,9 @@ class HomeScreen extends Component {
 	}
 
 	componentDidMount() {
+		if (Platform.OS !== 'ios') {
+			SplashScreen.hide();
+		}
 		this.loadData();
 	}
 
