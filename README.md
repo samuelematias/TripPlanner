@@ -92,7 +92,7 @@ Contact me by <a href="mailto:samuelmataraso@gmail.com">email</a> !
 
 <br/>
 
-> Note: Will this app be made available in-store (Apple Store/ Play Store) 🤔 ? perhaps in the near future, after some improvement 👨‍💻.
+> Note: Will this app be made available in-store (Apple Store/ Play Store) 🤔 ? perhaps... in the near future (After some improvement, off course 👨‍💻) !
 
 <br/>
 
