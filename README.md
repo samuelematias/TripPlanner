@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://imgur.com/ka5ccq4.png" height="100" /><br/>
+  <img src="https://imgur.com/Fo5zJgd.png" height="100" /><br/>
   <span><b>TripPlanner</b><br/>:
   <span>Application developed from the Hands on in</span><a href="https://www.devpleno.com/" target="_blank">devpleno.com</a> 
   <span>Application Developed full with React Native</span><br/>
