@@ -75,7 +75,7 @@ TripPlanner is a app to register your trips and points with your financial costs
 - `react-native link`
 - `react-native run-ios` or `react-native run-android`
 
-To open the projects on Xcode, use:
+To open the project on Xcode, use:
 
 - `cd ios/` and look for the file `TripPlanner.xcworkspace`
 
