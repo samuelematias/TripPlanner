@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://imgur.com/Fo5zJgd.png" height="224" /><br/>
-  <span>Application Developed with <b>React Native</b></span><br/>
-  <span>Running on both mobile platforms, <b>Android</b> & <b>iOS</b> </span><br/>
+  <span>Mobile Application Developed in <b>React Native.</b></span><br/>
+  <span>Running on both mobile platforms, <b>Android 🤖</b> & <b>iOS 🍎</b>. </span><br/>
 </p>
   
 <p align="center">
