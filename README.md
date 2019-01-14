@@ -72,7 +72,7 @@ TripPlanner is a app to register your trips and points with your financial costs
 - `git clone https://github.com/samuelmataraso/TripPlanner.git`
 - `yarn`
 - `cd ios/ && pod install`
-- `react-native link`
+- `cd .. && react-native link`
 - `react-native run-ios` or `react-native run-android`
 
 To open the project on Xcode, use:
